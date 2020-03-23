@@ -1,0 +1,27 @@
+---
+  - name: This is about test operators
+    hosts: localhost
+    gather_facts: false
+    vars:
+      x: 40
+      my_name: 'ansible'
+      my_path: '/home/ansadmin/my_ansible_nprod/member_ship_op.yml'
+      my_link_path: '/home/ansadmin/my_ansible_nprod/operators.yml'
+    tasks:
+      - debug:
+          msg:
+            - "x is defined:   {{ x is defined }}"
+            - "y is defined:   {{ y is defined }}"
+            - "z is undefined: {{ z is undefined }}"
+            - "my_name is lower: {{my_name is lower}}"
+            - "my_name is upper: {{my_name is upper}}"
+            - "my_name is string: {{my_name is string}}"
+            - "x is divisibleby 2: {{x is divisibleby 2}}"
+            - "x is even: {{ x is even }}"
+            - "x is odd: {{ x is odd }}"
+            - "x is number: {{ x is number}}"
+            - "The given path is: {{my_path}}"
+            - "my_path is file:   {{my_path is file}}"
+            - "my_path is directory: {{my_path is directory}}"
+            - "my_path is exists:   {{my_path is exists}}"
+            - "my_link_path is link  {{my_link_path is link }}"

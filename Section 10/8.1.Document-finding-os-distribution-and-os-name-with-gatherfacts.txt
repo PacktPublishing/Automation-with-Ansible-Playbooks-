@@ -1,0 +1,9 @@
+---
+ - hosts: all
+   tasks:
+   - debug:  
+      msg:
+       - "The os distribution is: {{ansible_distribution}}"
+       - "THe os name is: {{ansible_system}}"
+       - "The os family is: {{ansible_os_family}}"
+       - "THe mount points are :{{ansible_mounts}}"

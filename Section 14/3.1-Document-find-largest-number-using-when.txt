@@ -1,0 +1,14 @@
+---
+  - name: simple usage of inline conditional statement ( if else)
+    hosts: localhost
+    gather_facts: false
+    vars:
+      x: 15
+      y: 9
+    tasks:
+      - debug:
+          msg: "The larger number of {{x}} and {{y}} is: {{x}}"
+        when: x > y
+      - debug:
+          msg: "The large number of {{x}} and {{y}} is: {{y}}"
+        when: y > x

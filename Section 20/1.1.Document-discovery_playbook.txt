@@ -1,0 +1,28 @@
+---
+  - name: Discovery play
+    hosts: web_servers
+    gather_facts: true
+    tasks:
+      - name: Finding uptime
+        shell: "uptime"
+        register: up_time
+      - name: Displaying Discovery info
+        debug:
+          msg: "{{inventory_hostname}},{{ansible_os_family}},{{ansible_system}},{{ansible_distribution}},{{up_time.stdout.split(',')[0].split('up')[-1]}}"
+      - name: Removing old Discovery.csv file
+        file:
+          dest: ./Discovery.csv
+          state: absent
+        delegate_to: localhost
+        run_once: ture
+      - name: Creating Discovery.csv  file  with header
+        copy:
+          dest: ./Discovery.csv
+          content: "Server_Name, OS Family, OS Name, OS Distribution, uptime\n"
+        delegate_to: localhost
+        run_once: true
+      - name: UPdating info of each server in csv file
+        lineinfile:
+          path: ./Discovery.csv
+          line: "{{inventory_hostname}},{{ansible_os_family}},{{ansible_system}},{{ansible_distribution}},{{up_time.stdout.split(',')[0].split('up')[-1]}}"
+        delegate_to: localhost

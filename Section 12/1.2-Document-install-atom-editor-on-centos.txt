@@ -1,0 +1,22 @@
+Please follow below steps to install atom editor
+
+step1: 
+   sudo rpm --import https://packagecloud.io/AtomEditor/atom/gpgkey
+step2:
+   sudo vi /etc/yum.repos.d/atom.repo
+   
+   Paste the following content into the file:
+
+[Atom]
+name=Atom Editor
+baseurl=https://packagecloud.io/AtomEditor/atom/el/7/$basearch
+enabled=1
+gpgcheck=0
+repo_gpgcheck=1
+gpgkey=https://packagecloud.io/AtomEditor/atom/gpgkey
+
+step3:
+   sudo yum install atom
+
+step4:
+   add required extenstions for ansible

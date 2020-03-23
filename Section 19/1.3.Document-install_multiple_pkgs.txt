@@ -1,0 +1,26 @@
+---
+  - name: Simple play to install multiple pkgs
+    hosts: web_servers
+    gather_facts: true
+    become: yes
+    tasks:
+      - name: Installing webserver on RedHat family
+        yum:
+          name: httpd
+          state: present
+        when: ansible_os_family=="RedHat"
+      - name: Installing webserver on Debian family
+        apt:
+          name: apache2
+          state: present
+        when: ansible_os_family=="Debian"
+      - name: Installing java on RedHat family
+        yum:
+          name: java-1.8.0-openjdk
+          state: present
+        when: ansible_os_family=="RedHat"
+      - name: Installing java on Debian family
+        apt:
+          name: openjdk-8-jdk
+          state: present
+        when: ansible_os_family=="Debian"

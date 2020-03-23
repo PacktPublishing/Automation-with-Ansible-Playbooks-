@@ -1,0 +1,26 @@
+---
+  - name: WOrking with comparison operators
+    hosts: localhost
+    gather_facts: false
+    vars:
+      x: 6
+      y: 10
+      p: 'hi'
+      q: 'bye'
+      r: 'bye'
+
+    tasks:
+      - debug:
+          msg:
+            - "THe value of x is: {{x}} and The value of y is: {{y}}"
+            - "x == y: {{ x == y }}"
+            - "x != y: {{ x != y }}"
+            - "x < y : {{ x < y}}"
+            - "x > y : {{x > y}}"
+            - "x <= y: {{ x <= y }}"
+            - "x >= y: {{ x >= y }}"
+            - "Below are for strings:"
+            - "p= {{p}}  q={{q}} r={{r}}"
+            - "p == q: {{ p == q }}"
+            - "p != q: {{ p != q }}"
+            - "q == r: {{ q == r }}"

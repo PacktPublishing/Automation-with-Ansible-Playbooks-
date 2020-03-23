@@ -1,0 +1,20 @@
+---
+  - hosts: localhost
+    gather_facts: false
+    vars:
+      x: "ThiS IS abOut Ansible FilTERS AND mETHODS"
+      y: "56"
+      z: [4,5,6,38,0]
+
+    tasks:
+      - debug:
+          msg:
+            - "{{x|lower}}"
+            - "{{x|upper}}"
+            - "{{x|title}}"
+            - "{{x.lower()}}"
+            - "{{x.upper()}}"
+            - "{{y|int}}"
+            - "The max from z is: {{z|max}}"
+            - "THe min from z is: {{z|min}}"
+            - "{{x.split()}}"

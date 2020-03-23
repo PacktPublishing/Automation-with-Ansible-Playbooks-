@@ -1,0 +1,46 @@
+---
+ - name: Practice on Arithmetic Operators
+   hosts: localhost
+   gather_facts: false
+   vars:
+    x: 45
+    y: "{{x+5}}"
+   tasks:
+   - debug:
+       msg:
+       - "The value of x is: {{x}}"
+       - "The value of y is: {{y}}"
+===================================================
+---
+ - name: Practice on Arithmetic Operators
+   hosts: localhost
+   gather_facts: false
+   vars_prompt:
+    - name: x
+      prompt: Please enter x value
+      private: no
+    - name: y
+      prompt: Enter y value
+      private: no
+   vars:
+     a: 56
+   tasks:
+   - debug:
+       msg:
+       - "The value of x is: {{x}}"
+       - "The value of y is: {{y}}"
+       - "THe additon of {{x}} and {{y}} is {{x|int +y|int}}"
+       - "The {{a}} - {{y}} = {{a-y|int}}"
+=========================================
+---
+ - name: Practice on Arithmetic Operators
+   hosts: localhost
+   gather_facts: false
+   vars_files:
+    - my_vars.yml
+   tasks:
+   - debug:
+       msg:
+       - "The value of x is: {{x}}"
+       - "The value of y is: {{y}}"
+=========================================

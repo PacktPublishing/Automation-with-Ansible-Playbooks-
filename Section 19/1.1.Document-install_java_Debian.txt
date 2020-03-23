@@ -1,0 +1,5 @@
+---
+  - name: Installing java on Debian family
+    apt:
+      name: openjdk-8-jdk
+      state: present

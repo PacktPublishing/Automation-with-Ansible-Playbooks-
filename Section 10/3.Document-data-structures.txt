@@ -1,0 +1,17 @@
+---
+ - hosts: localhost
+   vars:
+    x: 34
+    #pakgs: ['vim','nano','httpd','nginx']
+    pakgs:
+    - 'vim'
+    - 'nano'
+    - 'httpd'
+    - 'nginx'
+    #web_servers: {'Linux': 'httpd', 'ubuntu': 'apache2'}
+    web_servers:
+     'Linux': 'httpd'
+     'ubuntu': 'apache2'
+   gather_facts: false
+   tasks:
+   - debug: var=web_servers.get('Linux')

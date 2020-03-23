@@ -1,0 +1,20 @@
+---
+  - hosts: localhost
+    gather_facts: false
+    become: yes
+    tasks:
+      - yum:
+         name: gettext-devel
+         state: present
+      - yum:
+         name: openssl-devel
+         state: present
+      - yum:
+         name: perl-CPAN
+         state: present
+      - yum:
+         name: perl-devel
+         state: present
+      - yum:
+         name: zlib-devel
+         state: present

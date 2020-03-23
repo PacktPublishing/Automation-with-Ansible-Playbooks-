@@ -1,0 +1,32 @@
+---
+  - name: Play with 5 tasks
+    hosts: localhost
+    gather_facts: false
+    tasks:
+      - debug:
+          msg: "This is a first task"
+        tags:
+          - first
+          - common
+          - always
+      - debug:
+          msg: "This is a second task"
+        tags:
+          - second
+          - never
+      - debug:
+          msg: "This is a third task"
+        tags:
+          - third
+          - common
+          - never
+      - debug:
+          msg: "This is a fourth task"
+        tags:
+          - fourth
+          - never
+      - debug:
+          msg: "This is a fifth task"
+        tags:
+          - fifth
+          - never

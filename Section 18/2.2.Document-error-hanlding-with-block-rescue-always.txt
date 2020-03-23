@@ -1,0 +1,14 @@
+---
+  - hosts: localhost
+    gather_facts: false
+    tasks:
+      - block:
+        - name: Finding files in /home/ansadmin/tomcat8
+          command: "ls /home/ansadmin/tomcat8"
+          register: tomcat8_out
+        rescue:
+          - debug:
+             msg: "The given path: /home/ansadmin/tomcat8 is not a validpath"
+        always:
+          - debug:
+             msg: "THis will always executes"
